@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <StateSet motion:defaultState="@id/full_1" />
+
+    <Transition
+        motion:constraintSetStart="@id/full_1"
+        motion:constraintSetEnd="@id/empty_1"
+        motion:autoTransition="animateToEnd"
+        motion:duration="1000"
+        motion:motionInterpolator="linear" />
+    <Transition
+        motion:constraintSetStart="@id/empty_1"
+        motion:constraintSetEnd="@id/rotate_1"
+        motion:autoTransition="animateToEnd"
+        motion:duration="250"
+        motion:motionInterpolator="easeIn" />
+    <Transition
+        motion:constraintSetStart="@id/rotate_1"
+        motion:constraintSetEnd="@id/full_2"
+        motion:autoTransition="animateToEnd"
+        motion:duration="250"
+        motion:motionInterpolator="easeOut">
+        <KeyFrameSet>
+            <KeyAttribute motion:motionTarget="@id/sand_top" motion:framePosition="99" android:alpha="0" />
+        </KeyFrameSet>
+    </Transition>
+    <Transition
+        motion:constraintSetStart="@id/full_2"
+        motion:constraintSetEnd="@id/empty_2"
+        motion:autoTransition="animateToEnd"
+        motion:duration="1000"
+        motion:motionInterpolator="linear" />
+    <Transition
+        motion:constraintSetStart="@id/empty_2"
+        motion:constraintSetEnd="@id/rotate_2"
+        motion:autoTransition="animateToEnd"
+        motion:duration="250"
+        motion:motionInterpolator="easeIn" />
+    <Transition
+        motion:constraintSetStart="@id/rotate_2"
+        motion:constraintSetEnd="@id/full_1"
+        motion:autoTransition="animateToEnd"
+        motion:duration="250"
+        motion:motionInterpolator="easeOut">
+        <KeyFrameSet>
+            <KeyAttribute motion:motionTarget="@id/glass_top" motion:framePosition="100" android:rotation="-360" />
+            <KeyAttribute motion:motionTarget="@id/glass_bottom" motion:framePosition="100" android:rotation="-360" />
+            <KeyAttribute motion:motionTarget="@id/sand_top" motion:framePosition="100" android:rotation="-360" />
+            <KeyAttribute motion:motionTarget="@id/sand_bottom" motion:framePosition="99" android:alpha="0" />
+            <KeyAttribute motion:motionTarget="@id/sand_bottom" motion:framePosition="100" android:rotation="-360"  />
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/full_1">
+        <Constraint android:id="@id/glass_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/glass_bottom"
+            motion:layout_constraintVertical_chainStyle="packed">
+            <Transform android:rotation="0"/>
+        </Constraint>
+        <Constraint android:id="@id/glass_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:layout_constraintTop_toBottomOf="@id/glass_top"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_chainStyle="packed">
+            <Transform android:rotation="0"/>
+        </Constraint>
+        <Constraint android:id="@id/sand_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_top">
+            <PropertySet android:alpha="1" />
+            <Transform android:rotation="0"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint android:id="@id/sand_bottom"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_bottom">
+            <Transform android:rotation="0"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="0" />
+        </Constraint>
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/empty_1">
+        <Constraint android:id="@id/glass_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startHorizontal"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/glass_bottom"
+            motion:layout_constraintVertical_chainStyle="packed">
+            <Transform android:rotation="0"/>
+        </Constraint>
+        <Constraint android:id="@id/glass_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startHorizontal"
+            motion:layout_constraintTop_toBottomOf="@id/glass_top"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_chainStyle="packed">
+            <Transform android:rotation="0"/>
+        </Constraint>
+        <Constraint android:id="@id/sand_top"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            motion:pathMotionArc="startHorizontal"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_top">
+            <Transform android:rotation="0"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint android:id="@id/sand_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startHorizontal"
+            motion:layout_constraintTop_toTopOf="@id/glass_bottom"
+            motion:layout_constraintStart_toStartOf="@id/glass_bottom"
+            motion:layout_constraintEnd_toEndOf="@id/glass_bottom"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_bottom">
+            <Transform android:rotation="0"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="0" />
+        </Constraint>
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/rotate_1">
+        <Constraint android:id="@id/glass_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startVertical"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/glass_bottom"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintHorizontal_chainStyle="packed">
+            <Transform android:rotation="-90"/>
+        </Constraint>
+        <Constraint android:id="@id/glass_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startVertical"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/glass_top"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintHorizontal_chainStyle="packed">
+            <Transform android:rotation="-90"/>
+        </Constraint>
+        <Constraint android:id="@id/sand_top"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            motion:pathMotionArc="startVertical"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_top">
+            <PropertySet android:alpha="0" />
+            <Transform android:rotation="-90"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="0.5" />
+        </Constraint>
+        <Constraint android:id="@id/sand_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startVertical"
+            motion:layout_constraintTop_toTopOf="@id/glass_bottom"
+            motion:layout_constraintStart_toStartOf="@id/glass_bottom"
+            motion:layout_constraintEnd_toEndOf="@id/glass_bottom"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_bottom">
+            <Transform android:rotation="-90"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="0.5" />
+        </Constraint>
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/full_2">
+        <Constraint android:id="@id/glass_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:layout_constraintTop_toBottomOf="@id/glass_bottom"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_chainStyle="packed">
+            <Transform android:rotation="-180"/>
+        </Constraint>
+        <Constraint android:id="@id/glass_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/glass_top"
+            motion:layout_constraintVertical_chainStyle="packed">
+            <Transform android:rotation="-180"/>
+        </Constraint>
+        <Constraint android:id="@id/sand_top"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            motion:layout_constraintStart_toStartOf="@id/glass_top"
+            motion:layout_constraintEnd_toEndOf="@id/glass_top"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_top">
+            <PropertySet android:alpha="1" />
+            <Transform android:rotation="-180"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="1" />
+        </Constraint>
+        <Constraint android:id="@id/sand_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:layout_constraintStart_toStartOf="@id/glass_bottom"
+            motion:layout_constraintEnd_toEndOf="@id/glass_bottom"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_bottom">
+            <Transform android:rotation="-180"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="1" />
+        </Constraint>
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/empty_2">
+        <Constraint android:id="@id/glass_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startHorizontal"
+            motion:layout_constraintTop_toBottomOf="@id/glass_bottom"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_chainStyle="packed">
+            <Transform android:rotation="-180"/>
+        </Constraint>
+        <Constraint android:id="@id/glass_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startHorizontal"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/glass_top"
+            motion:layout_constraintVertical_chainStyle="packed">
+            <Transform android:rotation="-180"/>
+        </Constraint>
+        <Constraint android:id="@id/sand_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startHorizontal"
+            motion:layout_constraintTop_toTopOf="@id/glass_top"
+            motion:layout_constraintStart_toStartOf="@id/glass_top"
+            motion:layout_constraintEnd_toEndOf="@id/glass_top"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_top">
+            <Transform android:rotation="-180"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="1" />
+        </Constraint>
+        <Constraint android:id="@id/sand_bottom"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            motion:pathMotionArc="startHorizontal"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_bottom">
+            <Transform android:rotation="-180"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="1" />
+        </Constraint>
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/rotate_2">
+        <Constraint android:id="@id/glass_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startVertical"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/glass_bottom"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintHorizontal_chainStyle="packed">
+            <Transform android:rotation="-270"/>
+        </Constraint>
+        <Constraint android:id="@id/glass_bottom"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startVertical"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/glass_top"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintHorizontal_chainStyle="packed">
+            <Transform android:rotation="-270"/>
+        </Constraint>
+        <Constraint android:id="@id/sand_top"
+            android:layout_width="@dimen/glass_size"
+            android:layout_height="@dimen/glass_size"
+            motion:pathMotionArc="startVertical"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="@id/glass_top"
+            motion:layout_constraintStart_toStartOf="@id/glass_top"
+            motion:layout_constraintBottom_toBottomOf="parent">
+            <Transform android:rotation="-270"/>
+            <CustomAttribute motion:attributeName="Crossfade" motion:customFloatValue="0.5" />
+        </Constraint>
+        <Constraint android:id="@id/sand_bottom"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            motion:pathMotionArc="startVertical"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/glass_bottom">
+            <PropertySet android:alpha="0" />
+            <Transform android:rotation="-270"/>
+        </Constraint>
+    </ConstraintSet>
+
+</MotionScene>
