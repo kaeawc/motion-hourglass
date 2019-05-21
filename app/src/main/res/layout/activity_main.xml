@@ -9,60 +9,32 @@
     app:layoutDescription="@xml/sand_scene"
     tools:context=".MainActivity">
 
+    <View android:id="@+id/glass_top"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/glass" />
 
-    <TextView
-        android:id="@+id/glass_top"
+    <View android:id="@+id/glass_bottom"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:background="@drawable/glass"
-        android:importantForAccessibility="no"
-        android:text="top"
-        android:gravity="center"
-        />
-    <TextView
-        android:id="@+id/glass_bottom"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/glass_180"
-        android:importantForAccessibility="no"
-        android:text="bottom"
-        android:gravity="center"
-        />
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/sand_top"
+        android:background="@drawable/glass_180" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView android:id="@+id/sand_top"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/sand"
         app:altSrc="@drawable/sand_flipped"
-        android:importantForAccessibility="no"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/glass_top"
-        />
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/sand_bottom"
+        app:layout_constraintBottom_toBottomOf="@id/glass_top" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView android:id="@+id/sand_bottom"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/sand_180"
         app:altSrc="@drawable/sand_180_flipped"
-        android:importantForAccessibility="no"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/glass_bottom"
-        />
-
-    <TextView
-        android:id="@+id/start_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:textSize="30sp"
-        android:background="@color/blue"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:padding="18sp"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/glass_bottom" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
